@@ -1,0 +1,37 @@
+.navbar{
+display: flex;
+align-items: center;
+justify-content: space-between;
+    .left{
+        display: flex;
+        align-items: center;
+
+        span{
+
+        }
+
+        .search{
+            display: flex;
+            align-items: center;
+            input{
+
+            }
+        }
+    }
+
+    .right{
+        display: flex;
+        align-items: center;
+
+        .user{
+
+            img{
+                
+            }
+
+            span{
+
+            }
+        }
+    }
+}
