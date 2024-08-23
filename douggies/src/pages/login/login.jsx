@@ -13,7 +13,7 @@ const Login = () => {
                         fugiat nesciunt. </p>
                     <span>Don't you have an account?</span>
                     <Link to="/register">
-                    <button>Register</button>
+                        <button>Register</button>
                     </Link>
                 </div>
                 <div className="right">

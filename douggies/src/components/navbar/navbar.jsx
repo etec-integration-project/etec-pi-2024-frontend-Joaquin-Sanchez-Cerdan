@@ -1,4 +1,5 @@
 import './navbar.scss';
+import userjumozz from '../../multimedia/userjumozz.jpg'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
@@ -15,21 +16,21 @@ const NavBar = () => {
       <div className="left">
         <Link to="/" style={{textDecoration:"none"}}>
           <span>Douggies</span>
-          <HomeOutlinedIcon/>
-          <DarkModeOutlinedIcon/>
-          <GridViewOutlinedIcon/>
-          <div className="search">
-            <SearchOutlinedIcon/>
-            <input type="text" placeholder='Search...'/>
-          </div>
         </Link>
+        <HomeOutlinedIcon />
+        <DarkModeOutlinedIcon/>
+        <GridViewOutlinedIcon />
+        <div className="search">
+          <SearchOutlinedIcon />
+          <input type="text" placeholder='Search...'/>
+        </div>
       </div>
       <div className="right">
-        <PersonOutlinedIcon/>
-        <EmailOutlinedIcon/>
-        <NotificationsOutlinedIcon/>
+        <PersonOutlinedIcon />
+        <EmailOutlinedIcon />
+        <NotificationsOutlinedIcon />
         <div className="user">
-          <img src="" alt="" />
+          <img src={userjumozz} />
           <span>Ju Mozz</span>
         </div>
       </div>
