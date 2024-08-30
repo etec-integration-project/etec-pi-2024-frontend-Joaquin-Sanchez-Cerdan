@@ -5,6 +5,7 @@ import LeftBar from "./components/leftBar/leftBar";
 import RightBar from "./components/rightBar/rightBar";
 import Home from "./pages/home/home";
 import Profile from "./pages/profile/profile";
+import './style.scss';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -12,13 +13,14 @@ import {
   Outlet,
   Navigate,
 } from "react-router-dom";
+
 function App() {
 
   const currentUser = true;
 
   const Layout= ()=>{
     return(
-      <div>
+      <div className="theme-dark">
         <NavBar/>
         <div style={{display: "flex"}}>
           <LeftBar/>
