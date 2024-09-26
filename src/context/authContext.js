@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import userjumozz from "../multimedia/userjumozz.jpg"; 
 
 export const AuthContext = createContext();
 
@@ -9,13 +8,14 @@ export const AuthContextProvider = ({children}) => {
     );
 
     const login = () => {
-        // Aún no está listo
+        //Falta
         setCurrentUser({
-            id: 1,
-            name: "Ju Mozz",
-            profilePic: {userjumozz},
+          id: 1,
+          name: "Ju Moz",
+          profilePic:
+            "https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600",
         });
-    };
+      };
 
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify(currentUser));

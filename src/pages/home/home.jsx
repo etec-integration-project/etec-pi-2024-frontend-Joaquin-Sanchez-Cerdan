@@ -1,8 +1,13 @@
 import "./home.scss";
+import Stories from "../../components/stories/stories";
+import Posts from "../../components/posts/posts";
 
 const Home = () => {
     return (
-        <div className="home"><h1>Home</h1></div>
+        <div className="home">
+            <Stories/>
+            <Posts/>
+        </div>
     );
 };
 
