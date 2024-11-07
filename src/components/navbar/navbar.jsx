@@ -21,14 +21,14 @@ const NavBar = () => {
   return (
     <div className='navbar'>
       <div className="left">
+        <span>Douggies</span>
         <Link to="/" style={{textDecoration:"none"}}>
-          <span>Douggies</span>
+          <HomeOutlinedIcon />
         </Link>
-        <HomeOutlinedIcon />
         {darkMode ? (
-          <WbSunnyOutlinedIcon onClick={toggle}/>
+          <WbSunnyOutlinedIcon onClick={toggle} cursor= "pointer"/>
         ) : (
-          <DarkModeOutlinedIcon onClick={toggle}/>
+          <DarkModeOutlinedIcon onClick={toggle} cursor= "pointer"/>
         )}
         <GridViewOutlinedIcon />
         <div className="search">
@@ -41,7 +41,9 @@ const NavBar = () => {
         <EmailOutlinedIcon />
         <NotificationsOutlinedIcon />
         <div className="user">
-          <img src={currentUser.profilePic} />
+          <Link to= "/profile/${user.userId}">
+            <img src={currentUser.profilePic} />
+          </Link>
           <span>{currentUser.name}</span>
         </div>
       </div>
