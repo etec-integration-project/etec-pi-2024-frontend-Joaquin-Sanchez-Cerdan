@@ -29,22 +29,29 @@ const Profile = () => {
   };
 
   const handleConfirm = async () => {
-    try {
-      const response = await axios.post("http://localhost:8080/perros/agregar", {
-        nombre: formData.field1,
-        edad: formData.field2,
-        raza: formData.field3,
-        genero: formData.field4,
-        descripcion: formData.field5,
-        precio: formData.field6,
-      });
+    console.log("Datos para enviar:", formData);
 
-      console.log("Form data submitted:", response.data);
-      setShowModal(false);
+    try {
+        const response = await axios.post("http://127.0.0.1:8080/perros/agregar", {
+            nombre: formData.field1,
+            edad: formData.field2,
+            raza: formData.field3,
+            genero: formData.field4,
+            descripcion: formData.field5,
+            precio: formData.field6,
+        }, {
+            headers: {
+                'Content-Type': 'application/json', // Asegúrate de que el tipo de contenido esté configurado correctamente
+            }
+        });
+
+        console.log("Form data submitted:", response.data);
+        setShowModal(false);
     } catch (error) {
-      console.error("Error submitting form data:", error);
+        console.error("Error submitting form data:", error);
     }
-  };
+};
+
 
   const handleCancel = () => {
     setFormData({
@@ -155,7 +162,7 @@ const Profile = () => {
                 onChange={handleInputChange}
               />
               <input
-                type="text"
+                type="number"
                 name="field6"
                 placeholder="Precio del Animal"
                 value={formData.field6}
