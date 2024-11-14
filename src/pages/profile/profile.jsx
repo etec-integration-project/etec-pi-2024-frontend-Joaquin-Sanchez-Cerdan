@@ -32,7 +32,7 @@ const Profile = () => {
     console.log("Datos para enviar:", formData);
 
     try {
-        const response = await axios.post('http://app:8080/api/perros/agregar', {
+        const response = await axios.post('/api/perros/agregar', {
             nombre: formData.field1,
             edad: formData.field2,
             raza: formData.field3,
