@@ -74,7 +74,7 @@ const Register = () => {
                             type="password"
                             placeholder="Repeat your Password"
                             name="password2"
-                            value={formData.name}
+                            value={formData.password2}
                             onChange={handleChange}
                         />
                         <button type="submit">Register</button>
