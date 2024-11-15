@@ -71,8 +71,8 @@ const Register = () => {
                             onChange={handleChange}
                         />
                         <input
-                            type="text"
-                            placeholder="Name"
+                            type="password"
+                            placeholder="Repeat your Password"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
