@@ -14,7 +14,7 @@ export const AuthContextProvider = ({ children }) => {
         try {
             const response = await axios.post("/api/login", inputs);
             if (response.data.success) {
-                const profilePic = response.data.user.profilePic || defaultProfilePic;
+                const profilePic = defaultProfilePic;
                 
                 setCurrentUser({
                     id: response.data.user.id,
