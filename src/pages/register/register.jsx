@@ -1,7 +1,37 @@
 import "./register.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 const Register = () => {
+    const [formData, setFormData] = useState({
+        username: "",
+        email: "",
+        password: "",
+        name: ""
+    });
+
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("/api/registro", formData);
+
+            if (response.status === 200) {
+                navigate("/");
+            } else {
+                console.error("Error en el registro");
+            }
+        } catch (error) {
+            console.error("Error en la conexión al backend:", error);
+        }
+    };
+
     return (
         <div className="register">
             <div className="card">
@@ -13,17 +43,41 @@ const Register = () => {
                         fugiat nesciunt. </p>
                     <span>Do you have an account?</span>
                     <Link to="/login">
-                    <button>Login</button>
+                        <button>Login</button>
                     </Link>
                 </div>
                 <div className="right">
                     <h1>Register</h1>
-                    <form>
-                        <input type="text" placeholder="Username"/>
-                        <input type="email" placeholder="Email"/> 
-                        <input type="password" placeholder="Password"/> 
-                        <input type="text" placeholder="Name"/> 
-                        <button>Register</button>
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            name="username"
+                            value={formData.username}
+                            onChange={handleChange}
+                        />
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                        />
+                        <button type="submit">Register</button>
                     </form>
                 </div>
             </div>
