@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./profile.scss";
 import FacebookTwoToneIcon from "@mui/icons-material/FacebookTwoTone";
@@ -13,6 +13,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Posts from "../../components/posts/posts";
 
 const Profile = () => {
+  const [userData, setUserData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     field1: "",
@@ -23,6 +24,14 @@ const Profile = () => {
     field6: ""
   });
 
+  // Recuperar datos del usuario desde el localStorage
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUserData(storedUser);
+    }
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -32,26 +41,25 @@ const Profile = () => {
     console.log("Datos para enviar:", formData);
 
     try {
-        const response = await axios.post('/api/perros/agregar', {
-            nombre: formData.field1,
-            edad: formData.field2,
-            raza: formData.field3,
-            genero: formData.field4,
-            descripcion: formData.field5,
-            precio: formData.field6,
-        }, {
-            headers: {
-                'Content-Type': 'application/json', // Asegúrate de que el tipo de contenido esté configurado correctamente
-            }
-        });
+      const response = await axios.post('/api/perros/agregar', {
+        nombre: formData.field1,
+        edad: formData.field2,
+        raza: formData.field3,
+        genero: formData.field4,
+        descripcion: formData.field5,
+        precio: formData.field6,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
 
-        console.log("Form data submitted:", response.data);
-        setShowModal(false);
+      console.log("Form data submitted:", response.data);
+      setShowModal(false);
     } catch (error) {
-        console.error("Error submitting form data:", error);
+      console.error("Error submitting form data:", error);
     }
-};
-
+  };
 
   const handleCancel = () => {
     setFormData({
@@ -74,8 +82,8 @@ const Profile = () => {
           className="cover"
         />
         <img
-          src="https://images.pexels.com/photos/14028501/pexels-photo-14028501.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
-          alt=""
+          src={userData?.profilePic || "https://via.placeholder.com/150"}
+          alt="Profile"
           className="profilePic"
         />
       </div>
@@ -99,7 +107,7 @@ const Profile = () => {
             </a>
           </div>
           <div className="center">
-            <span>Ju Moz</span>
+            <span>{userData?.name || "Usuario"}</span>
             <div className="info">
               <div className="item">
                 <PlaceIcon />
