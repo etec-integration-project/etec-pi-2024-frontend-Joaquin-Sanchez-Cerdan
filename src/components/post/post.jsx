@@ -35,6 +35,7 @@ function Post({ post }) {
                 </div>
                 <div className="content">
                     <ul>
+                        <li><strong>Nombre:</strong> {post.nombre || "No especificado"}</li>
                         <li><strong>Edad:</strong> {post.edad || "No especificado"}</li>
                         <li><strong>Raza:</strong> {post.raza || "No especificado"}</li>
                         <li><strong>Género:</strong> {post.genero || "No especificado"}</li>
