@@ -12,7 +12,7 @@ function Post({ post }) {
 
     const [commentOpen, setCommentsOpen] = useState(false);
 
-    //TEMP
+    // TEMP
     const liked = false;
 
     return (
@@ -34,8 +34,14 @@ function Post({ post }) {
                     <MoreHorizIcon />
                 </div>
                 <div className="content">
-                    <p>{post.desc}</p>
-                    <img src={post.img} alt="" />
+                    <ul>
+                        <li><strong>Edad:</strong> {post.edad || "No especificado"}</li>
+                        <li><strong>Raza:</strong> {post.raza || "No especificado"}</li>
+                        <li><strong>Género:</strong> {post.genero || "No especificado"}</li>
+                        <li><strong>Descripción:</strong> {post.descripcion || "No especificado"}</li>
+                        <li><strong>Precio:</strong> ${post.precio || "No especificado"}</li>
+                    </ul>
+                    {post.img && <img src={post.img} alt="" />}
                 </div>
                 <div className="info">
                     <div className="item">
@@ -57,4 +63,4 @@ function Post({ post }) {
     )
 }
 
-export default Post
+export default Post;
