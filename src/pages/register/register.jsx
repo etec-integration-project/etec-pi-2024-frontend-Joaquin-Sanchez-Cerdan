@@ -23,6 +23,13 @@ const Register = () => {
             const response = await axios.post("/api/registro", formData);
 
             if (response.status === 200) {
+                // Guardar los datos en el localStorage
+                localStorage.setItem("userData", JSON.stringify({
+                    username: formData.username,
+                    email: formData.email
+                }));
+
+                // Redirigir al usuario
                 navigate("/");
             } else {
                 console.error("Error en el registro");
@@ -86,3 +93,4 @@ const Register = () => {
 };
 
 export default Register;
+

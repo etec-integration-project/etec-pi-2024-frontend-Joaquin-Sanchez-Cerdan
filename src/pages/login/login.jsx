@@ -1,6 +1,6 @@
 import "./login.scss";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 
 const Login = () => {
@@ -9,6 +9,7 @@ const Login = () => {
         username: "",
         password: "",
     });
+    const navigate = useNavigate(); 
 
     const handleChange = (e) => {
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -16,7 +17,12 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault(); 
-        await login(inputs); 
+        try {
+            await login(inputs); 
+            navigate("/");
+        } catch (error) {
+            console.error("Login failed:", error);
+        }
     };
 
     return (
@@ -27,7 +33,7 @@ const Login = () => {
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
                         Perferendis quia enim animi doloremque blanditiis a dignissimos consequatur aliquam 
                         commodi tenetur accusantium, in molestiae veritatis aperiam reprehenderit laborum iusto, 
-                        fugiat nesciunt. </p>
+                        fugiat nesciunt.</p>
                     <span>Don't you have an account?</span>
                     <Link to="/register">
                         <button>Register</button>
